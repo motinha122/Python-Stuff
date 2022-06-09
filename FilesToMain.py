@@ -2,7 +2,7 @@ import os
 import shutil
 import stat
 
-directories = [] ; files = [] ; folderOrder = [] ; lists = [] ; blacklist = [] 
+directories = [] ; files = [] ; folderOrder = [] ; lists = [] ; blacklist = []
 rootFolder = os.getcwd()
 mainList = os.listdir(rootFolder)
 
@@ -18,7 +18,7 @@ print('''
 def listAllFolders(lists):
     directories.clear()
     for folder in lists:
-        if os.path.isdir(folder) and folder != '.git' and folder not in blacklist:
+        if os.path.isdir(folder) and folder != '.git':
             directories.append(folder)
 
 def listAllFiles(lists):
@@ -34,20 +34,19 @@ def moveFiles(lists):
 
 def firstFolderMoveFiles():
     while len(directories) != 0:
-        print(directories)
         os.chdir(directories[0])
         folderOrder.append(os.getcwd())
         lists = os.listdir(folderOrder[-1])
         listAllFolders(lists)
+        print(len(folderOrder))
 
     listAllFiles(lists)
-    blacklist.append(folderOrder[-1])
 
     if len(files) != 0:
         moveFiles(files)
+        
 
 def main():
-    numberOfFolders(os.getcwd())
     listAllFolders(mainList)
     firstFolderMoveFiles()
 
