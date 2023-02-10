@@ -35,7 +35,6 @@ scriptTs = ''''''
 ##############################################################################################################################################################
 
 os.mkdir(projectName)
-os.chdir(f"./{projectName}/")
 
 os.mkdir(f"./{projectName}/dist")
 os.chdir(f"./{projectName}/dist")
@@ -43,7 +42,9 @@ index = open("index.html","x")
 index.write(html)
 index.close
 
-os.chdir('..')
+os.chdir(f"./{projectName}/")
+# print(os.getcwd())
+
 
 os.mkdir(f"./{projectName}/Css")
 os.chdir(f"./{projectName}/Css")
@@ -51,7 +52,9 @@ css = open("style.css","x")
 css.write(cssf)
 css.close
 
-os.chdir('..')
+# print(os.getcwd())
+
+os.chdir(f"./{projectName}/")
 
 os.mkdir(f"./{projectName}/src")
 os.chdir(f"./{projectName}/src")
@@ -59,7 +62,9 @@ ts = open("script.ts","x")
 ts.write(scriptTs)
 ts.close
 
-os.chdir('..')
+# print(os.getcwd())
+
+os.chdir(f"./{projectName}/")
 
 print("Diretórios e arquivos criados")
 input("Press Enter to continue...")
